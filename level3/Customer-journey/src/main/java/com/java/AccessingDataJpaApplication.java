@@ -25,7 +25,7 @@ public class AccessingDataJpaApplication {
 	}
 
 	/**
-	 * Initial passwordEncoder bean for password comparison
+	 * Initial passwordEncoder bean for password comparison 
 	 * 
 	 */
 	@Bean
