@@ -31,7 +31,7 @@ import com.java.dao.CustomerRepoService;;
 public class CustomerController {
 
 	@Autowired
-	private CustomerRepoService customerService;
+	private CustomerRepoService customerService; 
 
 	/**
 	 * Request path "/" handler
