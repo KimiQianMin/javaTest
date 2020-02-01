@@ -5,8 +5,6 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.java.dao.Customer;
@@ -42,9 +39,8 @@ public class CustomerController {
 	 * @param customerDto
 	 */
 	@PutMapping(value = "/")
-	@ResponseBody
-	public ResponseEntity<Customer> addOrUpdateCustomer(@Valid @RequestBody Customer customerDto) {
-		return new ResponseEntity<>(this.customerService.addOrUpdateCustomer(customerDto), HttpStatus.OK);
+	public Customer addOrUpdateCustomer(@Valid @RequestBody Customer customerDto) {
+		return this.customerService.addOrUpdateCustomer(customerDto);
 	}
 
 	/**
@@ -53,9 +49,8 @@ public class CustomerController {
 	 * @param id
 	 */
 	@GetMapping(value = "/{id}")
-	@ResponseBody
-	public ResponseEntity<Customer> getCustomer(@PathVariable("id") @NonNull Long id) {
-		return new ResponseEntity<>(this.customerService.getCustomer(id), HttpStatus.OK);
+	public Customer getCustomer(@PathVariable("id") @NonNull Long id) {
+		return this.customerService.getCustomer(id);
 	}
 
 	/**
@@ -64,9 +59,8 @@ public class CustomerController {
 	 * @param lastName
 	 */
 	@GetMapping(value = "")
-	@ResponseBody
-	public ResponseEntity<List<Customer>> getCustomerByLastName(@RequestParam("lastName") @NonNull String lastName) {
-		return new ResponseEntity<>(this.customerService.getCustomerByLastName(lastName), HttpStatus.OK);
+	public List<Customer> getCustomerByLastName(@RequestParam("lastName") @NonNull String lastName) {
+		return this.customerService.getCustomerByLastName(lastName);
 	}
 
 	/**
@@ -75,9 +69,8 @@ public class CustomerController {
 	 * @param id
 	 */
 	@DeleteMapping(value = "/{id}")
-	@ResponseBody
-	public ResponseEntity<Boolean> deleteCustomer(@PathVariable("id") @NonNull Long id) {
-		return new ResponseEntity<>(this.customerService.deleteCustomer(id), HttpStatus.OK);
+	public Boolean deleteCustomer(@PathVariable("id") @NonNull Long id) {
+		return this.customerService.deleteCustomer(id);
 	}
 
 }
